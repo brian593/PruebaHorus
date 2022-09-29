@@ -1,4 +1,5 @@
 ﻿using System;
+using Horus.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,8 @@ namespace Horus
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginPage());
+
         }
 
         protected override void OnStart ()

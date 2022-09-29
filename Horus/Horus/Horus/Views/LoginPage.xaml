@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="Horus.Views.LoginPage">
+   
+    <ContentPage.Content>
+        
+<StackLayout>
+            <StackLayout.Resources>
+                        <ResourceDictionary>
+
+                    <Style x:Key="FrameEntryStyle" TargetType="Frame">
+                        <Setter Property="CornerRadius" Value="15"/>
+
+                        <Setter Property="BackgroundColor" Value="#F7F6F6"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="HasShadow" Value="False"/>
+                        <Setter Property="IsClippedToBounds" Value="True"/>
+
+                    </Style>
+                    <Style x:Key="EntryStyle" TargetType="Entry">
+                        <Setter Property="BackgroundColor" Value="#F7F6F6"/>
+                        <Setter Property="FontSize" Value="16"/>
+                    </Style>
+                   
+
+           
+
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#828282"/>
+                <Setter Property="FontSize" Value="12"/>
+            </Style>
+
+        </ResourceDictionary>
+
+            </StackLayout.Resources>
+       <yummy:PancakeView x:Name="cornerRadius" Margin="0,0,0,0" 
+                CornerRadius="30,30,30,30" HorizontalOptions="FillAndExpand" HeightRequest="280">
+                <Grid>
+                    <Image Source="background.jpg"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"
+                           Aspect="AspectFill" />
+                    <StackLayout VerticalOptions="End" HorizontalOptions="Start" Padding=" 30">
+
+                        <Label TextColor="#FFFFFF" Padding="5"
+                           Text="Bienvenido a"
+                           FontSize="22"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HorizontalTextAlignment="Center"  />
+
+                        <Image Source="logo_w.png" ></Image>
+
+                    </StackLayout>
+                    
+                </Grid>
+            </yummy:PancakeView>
+                          <StackLayout Margin="15">
+
+            <StackLayout Padding="30">
+                 <StackLayout>
+
+                <Label Text="Email" Style="{StaticResource LabelStyle}">
+
+
+                </Label>
+                    <Frame Style="{StaticResource FrameEntryStyle}" >
+                        <Entry  Style="{StaticResource EntryStyle}" Text="{Binding TxtEmail, Mode=TwoWay}" Keyboard="Email" >
+
+
+                </Entry>
+
+                    </Frame>
+                
+
+            </StackLayout>
+
+            <StackLayout >
+                <Label Text="Constraseña" Style="{StaticResource LabelStyle}"></Label>
+                    <Frame Style="{StaticResource FrameEntryStyle}" >
+                <Grid>
+                <Entry Placeholder="Password" Style="{StaticResource EntryStyle}" Text="{Binding TxtContraseña, Mode=TwoWay}" IsPassword="{Binding IsPassword}" />
+                <ImageButton BackgroundColor="Transparent" WidthRequest="24" VerticalOptions="Center" TranslationY="-5" TranslationX="-10" HorizontalOptions="End"
+                Command="{Binding ToggleIsPassword}"
+                Source="eye_none_b"   >
+                <ImageButton.Triggers>
+                <DataTrigger TargetType="ImageButton" Binding="{Binding IsPassword}" Value="True" >
+                  <Setter Property="Source" Value="eye_b" />
+                </DataTrigger>
+                </ImageButton.Triggers>
+                </ImageButton>
+                </Grid>
+
+
+                    </Frame>
+                                <Label Text="Olvidaste tu contraseña?" Style="{StaticResource LabelStyle}"  >
+
+                            <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding RecordarContraseña}" />
+
+                            </Label.GestureRecognizers>
+
+                        </Label>
+
+
+            </StackLayout>
+
+
+                </StackLayout>
+
+                <Button Text="Login"
+                        BackgroundColor="#F49390"
+                        FontSize="16"
+                        TextColor="#FFFFFF"
+                        CornerRadius="20"
+                        Margin="30,15,30,15"
+                        Command="{Binding LoginCmd}"
+                        />
+
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="CenterAndExpand"
+                             Margin="15"
+                             >
+
+                    <ImageButton Source="instagram_g.png"
+                                 HorizontalOptions="Center"
+                                  HeightRequest="50"
+                                    WidthRequest="50"
+                                Aspect="AspectFit"
+                                CornerRadius="25"
+                                 BackgroundColor="#F7F6F6"
+                                  Command="{Binding InstagramLogin}"
+                                 Padding="10"/>
+
+                    <ImageButton Source="facebook_g.png"
+                                 HorizontalOptions="Center"
+                                  HeightRequest="50"
+                                    WidthRequest="50"
+                                Aspect="AspectFit"
+                                CornerRadius="25"
+                                 BackgroundColor="#F7F6F6"
+                                 Command="{Binding FacebookLogin}"
+
+                                 Padding="10"/>
+                </StackLayout>
+<BoxView 
+                   HeightRequest="1"
+                   Color="LightGray"
+                   Margin ="40, 0, 40, 0"/>
+
+                  <Button Text="Registrarme"
+                        BackgroundColor="#F7F6F6"
+                        FontSize="16"
+                        TextColor="#828282"
+                        CornerRadius="20"
+                        Margin="30,15,30,15"
+
+                        ></Button>
+
+            </StackLayout>
+           
+
+     
+</StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

@@ -125,6 +125,9 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms.PancakeView">
+      <Version>2.3.0.759</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -132,5 +135,16 @@
       <Project>{A26BEFAC-3D41-4285-AFF4-75DBB9990530}</Project>
       <Name>Horus</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\eye_none_b.png" />
+    <BundleResource Include="Resources\arrow_right_g.png" />
+    <BundleResource Include="Resources\arrow_right_w.png" />
+    <BundleResource Include="Resources\background.jpg" />
+    <BundleResource Include="Resources\facebook_g.png" />
+    <BundleResource Include="Resources\instagram_g.png" />
+    <BundleResource Include="Resources\eye_b.png" />
+    <BundleResource Include="Resources\logo_w.png" />
+    <BundleResource Include="Resources\back_b.png" />
   </ItemGroup>
 </Project>

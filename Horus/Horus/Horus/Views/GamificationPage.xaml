@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False"
+    xmlns:local="clr-namespace:Horus.MyTriggers"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+      x:Class="Horus.Views.GamificationPage">
+    <ContentPage.Content>
+        <StackLayout>
+          
+
+            <StackLayout Margin="30,60,0,0" HorizontalOptions="Start" VerticalOptions="Start">
+            <Image Source="back_b.png" Aspect="AspectFit" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding returnCmd}"/>
+                    </Image.GestureRecognizers>
+            </Image>
+            </StackLayout>
+            <Grid Margin="30,30,30,30">
+                <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Margin="0" Text="Retos"
+                       FontAttributes="Bold"
+                       FontSize="24"
+                       HorizontalOptions="Start"
+                       Grid.Column="0"/>
+
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="EndAndExpand"
+                             Grid.Column="1">
+                <Label Text="{Binding Finalizados}" TextColor="#F49390" FontSize="14"></Label>
+                <Label Text="/" TextColor="#1A1A1A" FontSize="14"></Label>
+                <Label Text="{Binding Totales}" TextColor="#1A1A1A" FontSize="14"></Label>
+                </StackLayout>
+            </Grid>
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}" />
+           
+            <ListView ItemsSource="{Binding Retos}"
+                      x:Name="MyList"
+                     RowHeight="150"
+                     SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+
+               <yummy:PancakeView Margin="30,5,30,5" 
+                CornerRadius="30,30,30,30"
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="150" 
+                
+                BackgroundColor="{Binding pancakeColor}">
+                <yummy:PancakeView.Shadow>
+                <yummy:DropShadow Color="#000000" Offset="9,9" />
+                 </yummy:PancakeView.Shadow>
+
+               
+
+                <Grid Padding="10">
+                    <Grid.RowDefinitions>
+                     <RowDefinition Height="*" />
+                     <RowDefinition Height="*" />
+                     <RowDefinition Height="*" />
+                     <RowDefinition Height="*" />
+                     <RowDefinition Height="*" />
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{Binding title}"
+                               FontAttributes="Bold"
+                               FontSize="16"
+                               Grid.Column="0" Grid.Row="0"
+                              HorizontalOptions="Start"
+                              TextColor="{Binding titleColor}"
+                              />
+                        <Image Source="{Binding myIcon}"  HorizontalOptions="End" Grid.Column="1" Grid.Row="0"  />
+                        <Label FontSize="12" LineBreakMode="WordWrap" MaxLines="2"
+                        Text="{Binding description}"
+                               Grid.Column="0"
+                               Grid.ColumnSpan="2"
+                               Grid.RowSpan="2"
+                               TextColor="{Binding descriptionColor}"
+                               Grid.Row="1"/>
+
+                        <Label Text="{Binding currenTotalPoints}"
+                               Grid.Column="0"
+                               Grid.Row="3"
+                               FontSize="12"
+                               TextColor="{Binding descriptionColor}"
+                               HorizontalOptions="Start"/>
+                        <Label Text="{Binding percentLbl}"
+                               Grid.Column="1"
+                               Grid.Row="3"
+                               FontSize="12"
+                               TextColor="{Binding descriptionColor}"
+                               FontAttributes="Bold"
+                               HorizontalOptions="End"/>
+                    <ProgressBar
+                                        ProgressColor="{Binding barColor}"
+                                        Progress="{Binding percent}"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2"
+                                        Grid.Row="4" />
+                </Grid>
+            </yummy:PancakeView>
+                                                    </ViewCell>
+
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+
+
+            </ListView>
+
+            
+
+        </StackLayout>
+
+
+
+    </ContentPage.Content>
+</ContentPage>
+
