@@ -3,21 +3,21 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     NavigationPage.HasNavigationBar="False"
-    xmlns:local="clr-namespace:Horus.MyTriggers"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
       x:Class="Horus.Views.GamificationPage">
     <ContentPage.Content>
         <StackLayout>
           
 
-            <StackLayout Margin="30,60,0,0" HorizontalOptions="Start" VerticalOptions="Start">
+            <StackLayout Margin="{OnPlatform Android='30,30,0,0', iOS='30,60,0,0'}"  HorizontalOptions="Start" VerticalOptions="Start">
+                 
             <Image Source="back_b.png" Aspect="AspectFit" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding returnCmd}"/>
                     </Image.GestureRecognizers>
             </Image>
             </StackLayout>
-            <Grid Margin="30,30,30,30">
+            <Grid Margin="{OnPlatform Android='30,0,30,0', iOS='30,30,30,30'}" HeightRequest="60" >
                 <Grid.ColumnDefinitions>
                      <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -42,7 +42,9 @@
             <ListView ItemsSource="{Binding Retos}"
                       x:Name="MyList"
                      RowHeight="150"
-                     SeparatorVisibility="None">
+                     SeparatorVisibility="None"
+                     SelectedItem="{Binding RetoSeleccionado}"
+                     >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
@@ -56,8 +58,6 @@
                 <yummy:PancakeView.Shadow>
                 <yummy:DropShadow Color="#000000" Offset="9,9" />
                  </yummy:PancakeView.Shadow>
-
-               
 
                 <Grid Padding="10">
                     <Grid.RowDefinitions>

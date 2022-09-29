@@ -17,6 +17,8 @@ namespace Horus.ViewModels
         ObservableCollection<Gamification> retos;
         ApiService apiService;
         int totales, finalizados;
+        private Gamification retoSeleccionado;
+
         #endregion
 
         #region CONSTRUCTOR
@@ -33,6 +35,15 @@ namespace Horus.ViewModels
 
         #region OBJETOS
 
+        public Gamification RetoSeleccionado
+        {
+            get { return retoSeleccionado; }
+          //  set { retoSeleccionado = value; OnPropertyChanged(); }
+            set { SetValue(ref retoSeleccionado, value);
+                tapAlertAsync(value);
+            }
+
+        }
 
         public string TxtSample
         {
@@ -114,10 +125,15 @@ namespace Horus.ViewModels
         {
            await Navigation.PopAsync();
         }
+        public async Task tapAlertAsync(Gamification gamification)
+        {
+            await DisplayAlert(gamification.title, gamification.description, "ok");
+        }
         #endregion
 
         #region COMANDOS
         public ICommand returnCmd => new Command(async () => await returnPageAsync());
+
         #endregion
     }
 }
